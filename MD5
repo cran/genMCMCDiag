@@ -1,7 +1,7 @@
-42afdd0f6923cfc5b49d7747ec6c43b1 *DESCRIPTION
+cd06388e9af267fec2c01adac9e417a6 *DESCRIPTION
 f0199597577c5e3397e38a1a9dfb6176 *LICENSE
 d28ea2b3f95d27e496e911a6982eb049 *NAMESPACE
-0f36c7d389a0f49df27ebb77cb1cb6d0 *NEWS.md
+3a059a4ffa4cec801bb89df01b1afa65 *NEWS.md
 b1f3a69dd22ce96200a15dd880c36d86 *R/data.R
 eea6b58a2a2eae7680d20463bc0e2975 *R/diag-sess.R
 64e26ac90b6a2ea4c2a1ee3145c6a2db *R/diag-sgelmanRubin.R
@@ -16,7 +16,7 @@ a71d5f52a2c0d2e593c552956c49c673 *R/util-estimateTsTime.R
 14c1fed05567386d2f448e5a01ec3593 *R/util-fitNN.R
 9b4583eb3dcff27d9ffc35605b2bfa68 *R/util-listLabels.R
 e03416a423c3ae1e8ffbe3036d6b1281 *R/util-mcmcDiagMethods.R
-a122428681258c4df36ed4a5c2707c03 *README.md
+4c92a56ccebc13250b24041787e18f9f *README.md
 c614ca22bdf9b3f720b7a0b4f111a516 *data/bnMCMCResults.rda
 5ef2981e9c5d84b316249f0726c20880 *data/uniMCMCResults.rda
 327b4af8a99f81988d11fc478f91ba7e *man/bnMCMCResults.Rd
@@ -36,7 +36,7 @@ ed42e3fbd7cc30bc6ca8fa9b658e24a8 *man/figures/lifecycle-stable.svg
 bf2f1ad432ecccee3400afe533404113 *man/figures/lifecycle-superseded.svg
 d6521b01061724a43fc15a13bff5bd11 *man/fitNN.Rd
 4121ed4a5f7e4a85f845fece8edd884e *man/genDiagnostic.Rd
-b20ea166e07ca95c0f82e6fa80aff279 *man/genMCMCDiag-package.Rd
+50feebf00562db04ee8eb09e30fda747 *man/genMCMCDiag-package.Rd
 dea45b24fc7e3a51f43a71d987f82f35 *man/hammingDist.Rd
 c0a95bafcd0ba66a392572b0511a7f16 *man/lanfearTransform.Rd
 e10ea764d7dd8b19b03931304fa78125 *man/listLabels.Rd

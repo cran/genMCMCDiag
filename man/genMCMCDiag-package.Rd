@@ -6,7 +6,7 @@
 \alias{genMCMCDiag-package}
 \title{genMCMCDiag: Generalized Convergence Diagnostics for Difficult MCMC Algorithms}
 \description{
-Traceplots and convergence diagnostics for Markov Chain Monte Carlo (MCMC) algorithms on highly multivariate or unordered spaces. Methods outlined in a forthcoming paper.
+Trace plots and convergence diagnostics for Markov Chain Monte Carlo (MCMC) algorithms on highly multivariate or unordered spaces. Methods outlined in a forthcoming paper.
 }
 \seealso{
 Useful links:
