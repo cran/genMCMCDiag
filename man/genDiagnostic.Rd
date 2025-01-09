@@ -6,8 +6,8 @@
 \usage{
 genDiagnostic(
   mhDraws,
-  method = c("standard", "ts", "lanfear", "likelihood"),
-  diagnostics = c("traceplot", "ess", "gelmanRubin"),
+  proximityMap = c("standard", "ts", "lanfear"),
+  diagnostics = c("traceplot", "ess", "psrf"),
   distance = NULL,
   verbose = FALSE,
   ...
@@ -16,11 +16,11 @@ genDiagnostic(
 \arguments{
 \item{mhDraws}{A list of MCMC draws, where each element is an ordered list or numeric vector representing the output of a single MCMC chain.}
 
-\item{method}{Method for transforming the MCMC draws. Options include 'standard', 'ts', 'lanfear', or a custom transformation function. See details.}
+\item{proximityMap}{Method (called a proximity-map) for transforming the MCMC draws. Options include 'standard', 'ts', 'lanfear', or a custom function. See details.}
 
-\item{diagnostics}{A character vector or list of diagnostic functions to be evaluated. Options include 'traceplot', 'ess', 'gelmanRubin', or custom functions. See details.}
+\item{diagnostics}{A character vector or list of diagnostic functions to be evaluated. Options include 'traceplot', 'ess', 'psrf', or custom functions. See details.}
 
-\item{distance}{Function for evaluating distance between MCMC draws if required by 'method'. This should be a pairwise distance function that operates on elements of the chains from mhDraws. Note that the lanfear and ts methods ALWAYS require a distance function.}
+\item{distance}{Function for evaluating distance between MCMC draws if required by 'method'. This should be a pairwise distance function that operates on elements of the chains from mhDraws. Note that the lanfear and ts proximityMaps ALWAYS require a distance function.}
 
 \item{verbose}{If TRUE, informative messages are displayed.}
 
@@ -44,14 +44,17 @@ An object of class 'mcmcDiag', containing evaluated diagnostics, transformed dra
 This function generates generalized diagnostics for Markov Chain Monte Carlo (MCMC) draws, transforming the draws if specified, and evaluating selected diagnostics.
 }
 \details{
-Built-in transformation methods can be called with the appropriate character string in the 'method'
-argument. For details on a particular method use ?lanfearTransform or ?tsTransform. Custom transform
+Built-in proximity-maps can be called with the appropriate character string in the 'proximity-map'
+argument. For details on a particular proximity-map use ?lanfearTransform or ?tsTransform,
+the standard proximity-map induces no transformation. Custom proximity-map
 functions may be added as well. A custom function must be written to accept a list of mcmcChain
 type objects, and output a list of dataframes with columns val (the transformed draw) and t (the MCMC chain order).
 Each element in the list is the transformed MCMC chain corresponding to the input.
 
 Built-in diagnostics can be called with the appropriate character string in the 'diagnostics'
-argument. Additional custom diagnostic functions may be written. These functions should
+argument. Current diagnostic options are 'traceplot' for traceplots, 'ess' for Effective Sample Size,
+and 'psrf' for the Gelman-Rubin Potential Scale Reduction Factor.
+Additional custom diagnostic functions may be written. These functions should
 act on a list of data.frames output from a transform function and should output as a relatively
 small data.frame where the name of diagnostic is the first row.name.
 }
@@ -61,13 +64,12 @@ tstS <- genDiagnostic(uniMCMCResults)
 tstS
 
 #Example using 'lanfear' traceplot
-tstL <- genDiagnostic(uniMCMCResults, method = 'lanfear', distance = eucDist,
+tstL <- genDiagnostic(uniMCMCResults, proximityMap = 'lanfear', distance = eucDist,
                       reference = 0)
 tstL
 
-
-#Example using bayesian network sample data, with 'lanfear' method
-tstBN <- genDiagnostic(bnMCMCResults, method = 'lanfear', distance = partitionDist)
-tstBN
+#Example using bayesian network sample data, with 'lanfear' proximityMap
+tstBN1 <- genDiagnostic(bnMCMCResults, proximityMap = 'lanfear', distance = partitionDist)
+tstBN1
 
 }

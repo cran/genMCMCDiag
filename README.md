@@ -33,12 +33,12 @@ devtools::install_github("LukeDuttweiler/genMCMCDiag")
 
 Consider the results of a multi-chain MCMC algorithm over a univariate
 space. The `genMCMCDiag` package provides a simple interface to retrieve
-traceplots, the effective sample size (ESS), and the Gelman-Rubin (GR)
-diagnostic.
+traceplots, the effective sample size (ESS), and the Gelman-Rubin
+Potential Scale Reduction Factor (PSRF).
 
 We demonstrate the usage of `genMCMCDiag` in this simple scenario, using
 the included simulated MCMC results `uniMCMCResults`. The output of
-`genDiagnostic` is a traceplot and tables containing the ESS and GR
+`genDiagnostic` is a traceplot and tables containing the ESS and PSRF
 results. The method is set to ‘standard’ here as we don’t want to
 transform the data prior to running the diagnostics, as it is already
 univariate.
@@ -59,13 +59,13 @@ str(uniMCMCResults)
 #>  $ : num [1:2000] 5.87 -5.83 5.81 5.81 5.81 ...
 
 #View Diagnostics
-genDiagnostic(uniMCMCResults, method = 'standard')
+genDiagnostic(uniMCMCResults, proximityMap = 'standard')
 ```
 
 <img src="man/figures/README-example1-1.png" width="100%" />
 
     #> ----------------------------------------------------
-    #> Generalized MCMC Diagnostics using standard Method 
+    #> Generalized MCMC Diagnostics using Custom Method 
     #> ----------------------------------------------------
     #> 
     #> |Effective Sample Size: 
@@ -74,7 +74,7 @@ genDiagnostic(uniMCMCResults, method = 'standard')
     #> |-------:|-------:|-------:|-------:|-------:|--------:|--------:|--------:|
     #> | 847.966| 908.501| 885.617|  828.86|  694.21| 1052.483| 1019.646| 6237.283|
     #> 
-    #> |Gelman-Rubin Diagnostic: 
+    #> |psrf: 
     #> |---------------------------
     #> | Point est.| Upper C.I.|
     #> |----------:|----------:|
@@ -93,17 +93,17 @@ issue, based on a user-supplied (or built in) distance function. In this
 instance we will use the built-in `partitionDistance` and the `ts`
 transformation method (details to be published in a forthcoming paper),
 to view a diagnostic traceplot and transformed calculations of the ESS
-and GR diagnostics.
+and PSRF diagnostics.
 
 ``` r
 #View Diagnostics from ts method
-genDiagnostic(bnMCMCResults, method = 'ts', distance = partitionDist)
+genDiagnostic(bnMCMCResults, proximityMap = 'ts', distance = partitionDist)
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
 
     #> ----------------------------------------------------
-    #> Generalized MCMC Diagnostics using ts Method 
+    #> Generalized MCMC Diagnostics using Custom Method 
     #> ----------------------------------------------------
     #> 
     #> |Effective Sample Size: 
@@ -112,7 +112,7 @@ genDiagnostic(bnMCMCResults, method = 'ts', distance = partitionDist)
     #> |-------:|-------:|-------:|-------:|-------:|------:|
     #> |  30.553|  25.257|  18.956|  74.901|  32.204| 181.87|
     #> 
-    #> |Gelman-Rubin Diagnostic: 
+    #> |psrf: 
     #> |---------------------------
     #> | Point est.| Upper C.I.|
     #> |----------:|----------:|
